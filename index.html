@@ -1,0 +1,1234 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#17131c" />
+    <meta name="color-scheme" content="light" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="geo.region" content="RU-MOW" />
+    <meta name="geo.placename" content="Москва" />
+    <meta
+      name="description"
+      content="Театр танца Анны Восковой «Зеркальный мир» — творческое пространство для развития детей через искусство танца."
+    />
+    <title>Зеркальный мир — театр танца Анны Восковой</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" href="логотип-mark.webp" type="image/webp" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Prata&display=swap"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "DanceGroup",
+        "name": "Театр танца Анны Восковой «Зеркальный мир»",
+        "telephone": "+7 903 210-55-44",
+        "email": "anna.voskovazm@mail.ru",
+        "priceRange": "7920 RUB / 12 занятий в месяц",
+        "hasMap": "https://yandex.ru/maps/org/zerkalny_mir/115555938647/",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "улица Богданова, 44",
+          "addressLocality": "Москва",
+          "addressCountry": "RU"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "15:00",
+            "closes": "21:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Saturday",
+            "opens": "10:00",
+            "closes": "17:00"
+          }
+        ],
+        "sameAs": [
+          "https://t.me/TeatrTancaZerkalniimir",
+          "https://max.ru/channel_voskovaZM",
+          "https://vk.ru/teatrtancazerkalniimir",
+          "https://rutube.ru/channel/18616592"
+        ]
+      }
+    </script>
+    <style>
+      .lightbox .lightbox-prev,
+      .lightbox .lightbox-next {
+        width: 54px;
+        height: 54px;
+        border: 1px solid rgba(255, 255, 255, 0.42);
+        border-radius: 16px;
+        background: rgba(18, 12, 23, 0.56);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.24);
+        font-size: 25px;
+        line-height: 1;
+        transition:
+          background 0.25s,
+          border-color 0.25s,
+          transform 0.25s;
+      }
+      .lightbox .lightbox-prev:hover,
+      .lightbox .lightbox-next:hover {
+        background: #6f39dc;
+        border-color: #c8adff;
+        color: #fff;
+        transform: translateY(-50%) scale(1.06);
+      }
+      .lightbox .lightbox-prev:focus-visible,
+      .lightbox .lightbox-next:focus-visible {
+        outline: 3px solid #c8adff;
+        outline-offset: 3px;
+      }
+      .application-text {
+        user-select: none;
+        pointer-events: none;
+      }
+      .application-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .application-actions .button {
+        width: 100%;
+        justify-content: center;
+      }
+      .application-actions .application-copy {
+        grid-column: 1/-1;
+      }
+      .button.telegram-open {
+        background: #e8e0f3;
+        color: #28143d;
+      }
+      @media (max-width: 760px) {
+        .application-actions {
+          grid-template-columns: 1fr;
+        }
+        .application-actions .application-copy {
+          grid-column: auto;
+        }
+      }
+      .lightbox .lightbox-prev,
+      .lightbox .lightbox-next {
+        font-size: 0 !important;
+      }
+      .lightbox .lightbox-prev::after,
+      .lightbox .lightbox-next::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 14px;
+        height: 14px;
+        border-top: 2px solid #fff;
+        border-right: 2px solid #fff;
+      }
+      .lightbox .lightbox-prev::after {
+        transform: translate(-50%, -50%) rotate(-135deg);
+      }
+      .lightbox .lightbox-next::after {
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+      .section {
+        padding-left: max(7vw, calc((100vw - 1500px) / 2));
+        padding-right: max(7vw, calc((100vw - 1500px) / 2));
+      }
+      .section-head {
+        position: relative;
+        padding-bottom: 28px;
+        border-bottom: 1px solid rgba(24, 21, 29, 0.14);
+      }
+      .projects .section-head {
+        border-color: rgba(255, 255, 255, 0.14);
+      }
+      .section-head::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 76px;
+        height: 2px;
+        background: #6f39dc;
+      }
+      .projects .section-head::after {
+        background: #b991ff;
+      }
+      .nav a.active:not(.nav-cta) {
+        opacity: 1;
+        color: #d3baff;
+      }
+      .nav a.active:not(.nav-cta)::after {
+        transform: scaleX(1);
+      }
+      .reveal {
+        transition-delay: var(--delay, 0ms);
+      }
+      @media (min-width: 901px) {
+        .gallery {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          grid-template-rows: repeat(4, 260px);
+          grid-auto-rows: 260px;
+        }
+        .gallery .work {
+          grid-column: auto !important;
+          grid-row: auto !important;
+        }
+        .gallery .work:nth-child(1) {
+          grid-column: 1/3 !important;
+          grid-row: 1/3 !important;
+        }
+        .gallery .work:nth-child(2) {
+          grid-column: 3 !important;
+          grid-row: 1 !important;
+        }
+        .gallery .work:nth-child(3) {
+          grid-column: 4 !important;
+          grid-row: 1/3 !important;
+        }
+        .gallery .work:nth-child(4) {
+          grid-column: 3 !important;
+          grid-row: 2 !important;
+        }
+        .gallery .work:nth-child(5) {
+          grid-column: 1 !important;
+          grid-row: 3/5 !important;
+        }
+        .gallery .work:nth-child(6) {
+          grid-column: 2/4 !important;
+          grid-row: 3 !important;
+        }
+        .gallery .work:nth-child(7) {
+          grid-column: 4 !important;
+          grid-row: 3/5 !important;
+        }
+        .gallery .work:nth-child(8) {
+          grid-column: 2/4 !important;
+          grid-row: 4 !important;
+        }
+      }
+      .projects {
+        position: relative;
+        isolation: isolate;
+        --mx: 50%;
+        --my: 30%;
+      }
+      .projects::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        background: radial-gradient(
+          650px circle at var(--mx) var(--my),
+          rgba(111, 57, 220, 0.18),
+          transparent 65%
+        );
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+      .work span {
+        transition: transform 0.35s;
+      }
+      .work:hover span {
+        transform: translateY(-4px);
+      }
+      .work::after {
+        background: linear-gradient(
+          0deg,
+          rgba(4, 2, 7, 0.86),
+          rgba(10, 5, 16, 0.08) 62%,
+          transparent
+        );
+      }
+      .award-list {
+        counter-reset: award;
+      }
+      .award-list article {
+        position: relative;
+      }
+      .award-list article::before {
+        counter-increment: award;
+        content: counter(award, decimal-leading-zero);
+        position: absolute;
+        right: 8px;
+        top: 10px;
+        font-family: Prata, serif;
+        font-size: 11px;
+        color: rgba(111, 57, 220, 0.38);
+      }
+      .form {
+        position: relative;
+        overflow: hidden;
+      }
+      .form::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, #6f39dc, #b991ff, #6f39dc);
+        background-size: 200% 100%;
+        animation: formGlow 5s linear infinite;
+      }
+      @keyframes formGlow {
+        to {
+          background-position: 200% 0;
+        }
+      }
+      @media (max-width: 900px) {
+        .section {
+          padding-left: 5vw;
+          padding-right: 5vw;
+        }
+        .section-head {
+          padding-bottom: 22px;
+        }
+      }
+      @media (max-width: 580px) {
+        .section {
+          padding-left: 18px;
+          padding-right: 18px;
+        }
+        .section-head::after {
+          width: 52px;
+        }
+      }
+      .eyebrow {
+        font-size: 15px;
+        letter-spacing: 0.22em;
+      }
+      .nav {
+        gap: 22px;
+      }
+      .contact-links > span {
+        font-family: Prata, serif;
+        font-size: 24px;
+        display: flex;
+        align-items: baseline;
+      }
+      .contact-links > span small {
+        font:
+          10px Manrope,
+          sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-left: 10px;
+        color: #675b6b;
+      }
+      .studio-phone {
+        -webkit-user-select: text;
+        user-select: text;
+      }
+      .rehearsals {
+        background: #f4f0e9;
+      }
+      .rehearsal-grid {
+        display: grid;
+        grid-template-columns: 1.35fr 0.65fr 1fr;
+        grid-template-rows: 280px 280px;
+        gap: 12px;
+      }
+      .rehearsal-photo {
+        border: 0;
+        padding: 0;
+        overflow: hidden;
+        background: #ddd;
+        cursor: zoom-in;
+      }
+      .rehearsal-photo:first-child {
+        grid-row: 1/3;
+      }
+      .rehearsal-photo:nth-child(4) {
+        grid-column: 2/4;
+      }
+      .rehearsal-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition:
+          transform 0.7s,
+          filter 0.5s;
+      }
+      .rehearsal-photo:hover img {
+        transform: scale(1.045);
+        filter: saturate(1.08);
+      }
+      .archive-jump {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 30px;
+        padding: 18px 0;
+        border-top: 1px solid rgba(24, 21, 29, 0.16);
+        border-bottom: 1px solid rgba(24, 21, 29, 0.16);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.13em;
+      }
+      .archive-jump span {
+        font-size: 22px;
+        color: #6f39dc;
+      }
+      .archive {
+        background: #e9e2ec;
+      }
+      .album-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+      .album-card {
+        position: relative;
+        min-height: 410px;
+        border: 0;
+        padding: 0;
+        overflow: hidden;
+        background: #17131c;
+        color: #fff;
+        text-align: left;
+        cursor: pointer;
+      }
+      .album-card img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition:
+          transform 0.7s,
+          filter 0.5s;
+      }
+      .album-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          0deg,
+          rgba(13, 8, 18, 0.92),
+          rgba(13, 8, 18, 0.05) 65%
+        );
+      }
+      .album-card-content {
+        position: absolute;
+        z-index: 2;
+        left: 24px;
+        right: 24px;
+        bottom: 22px;
+      }
+      .album-card h3 {
+        font-family: Prata, serif;
+        font-weight: 400;
+        font-size: 27px;
+        margin: 0 0 7px;
+      }
+      .album-card p {
+        margin: 0;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        opacity: 0.75;
+      }
+      .album-card:hover img {
+        transform: scale(1.055);
+        filter: saturate(1.12);
+      }
+      .album-card:first-child {
+        grid-column: span 2;
+      }
+      .album-dialog {
+        width: 100vw;
+        max-width: none;
+        height: 100vh;
+        max-height: none;
+        margin: 0;
+        border: 0;
+        padding: 0;
+        background: #f4f0e9;
+        color: #18151d;
+      }
+      .album-dialog::backdrop {
+        background: #100d13;
+      }
+      .album-shell {
+        min-height: 100%;
+        padding: 55px max(4vw, calc((100vw - 1500px) / 2)) 70px;
+      }
+      .album-close {
+        position: fixed;
+        z-index: 5;
+        right: 24px;
+        top: 18px;
+        width: 46px;
+        height: 46px;
+        border: 1px solid rgba(24, 21, 29, 0.2);
+        border-radius: 50%;
+        background: #fff;
+        font-size: 30px;
+        cursor: pointer;
+      }
+      .album-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding: 20px 70px 35px 0;
+        border-bottom: 1px solid rgba(24, 21, 29, 0.18);
+        margin-bottom: 22px;
+      }
+      .album-head h2 {
+        font-family: Prata, serif;
+        font-size: clamp(44px, 6vw, 85px);
+        font-weight: 400;
+        line-height: 1;
+        margin: 15px 0 0;
+      }
+      .album-total {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+      }
+      .album-photos {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .album-photo {
+        border: 0;
+        padding: 0;
+        background: #d9d3db;
+        aspect-ratio: 4/3;
+        overflow: hidden;
+        cursor: zoom-in;
+      }
+      .album-photo:nth-child(7n + 1) {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+      .album-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+      .album-photo:hover img {
+        transform: scale(1.04);
+      }
+      @media (max-width: 900px) {
+        .nav {
+          gap: 0;
+        }
+        .album-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .album-card:first-child {
+          grid-column: span 2;
+        }
+        .album-photos {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      @media (max-width: 580px) {
+        .eyebrow {
+          font-size: 11px;
+        }
+        .rehearsal-grid {
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 280px 190px 190px;
+        }
+        .rehearsal-photo:first-child {
+          grid-column: 1/3;
+          grid-row: auto;
+        }
+        .rehearsal-photo:nth-child(4) {
+          grid-column: auto;
+        }
+        .album-grid {
+          grid-template-columns: 1fr;
+        }
+        .album-card,
+        .album-card:first-child {
+          grid-column: auto;
+          min-height: 330px;
+        }
+        .album-shell {
+          padding: 55px 14px 40px;
+        }
+        .album-head {
+          padding-right: 42px;
+        }
+        .album-head h2 {
+          font-size: 42px;
+        }
+        .album-photos {
+          grid-template-columns: 1fr 1fr;
+          gap: 5px;
+        }
+        .album-photo:nth-child(7n + 1) {
+          grid-column: span 2;
+        }
+        .contact-links > span {
+          font-size: 19px;
+          flex-direction: column;
+          gap: 5px;
+        }
+        .contact-links > span small {
+          margin-left: 0;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <header class="header" id="top">
+      <a class="brand" href="#top" aria-label="На главную">
+        <img
+          src="логотип-mark.webp"
+          alt="Логотип театра танца Зеркальный мир"
+        />
+        <span><b>Зеркальный мир</b></span>
+      </a>
+      <button class="menu-btn" aria-label="Открыть меню" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+      <nav class="nav" aria-label="Основная навигация">
+        <a href="#about">О театре</a><a href="#director">Руководитель</a
+        ><a href="#team">Команда</a
+        ><a href="#projects">Больше, чем движение</a
+        ><a href="#archive">Фотогалерея</a><a href="#awards">Достижения</a
+        ><a href="#visit">Условия и отзывы</a>
+        <a class="nav-cta" href="#contact">Записаться</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content reveal">
+          <div class="eyebrow">Театр танца Анны Восковой</div>
+          <h1>Зеркальный<br /><em>мир</em></h1>
+          <p>
+            Творческое пространство для развития детей через искусство танца
+          </p>
+          <div class="hero-actions">
+            <a class="button light" href="#contact">Записаться на просмотр</a>
+          </div>
+        </div>
+        <div class="hero-note">Москва · Солнцево</div>
+        <a class="scroll" href="#about" aria-label="Прокрутить вниз"
+          >Вниз <i></i
+        ></a>
+      </section>
+
+      <section class="intro section" id="about">
+        <div class="section-mark">01 · О театре</div>
+        <div class="intro-copy reveal">
+          <h2>Танец, в котором ребёнок <em>находит себя</em></h2>
+          <p class="lead">Уважаемые родители и будущие артисты!</p>
+          <div class="about-text">
+            <p>
+              В нашей работе мы учитываем возраст, физические возможности и
+              индивидуальные особенности каждой девочки при подборе группы и
+              составлении программы. Главное для нас — не стартовый уровень, а
+              искреннее желание учиться и развиваться.
+            </p>
+            <p>
+              Преподаватели используют комплексную методику: современная
+              хореография, эстрадный танец, джаз-модерн, импровизация, актёрское
+              мастерство, акробатика и элементы физического театра. Такой подход
+              развивает пластику, координацию, музыкальность, сценическое
+              мышление и уверенность — качества, которые остаются с ребёнком на
+              всю жизнь.
+            </p>
+            <p>
+              Театр «Зеркальный мир» — многократный призёр и обладатель Гран-при
+              международных конкурсов, участник телевизионных проектов. Мы
+              работаем системно: от формирования технической базы и творческого
+              поиска до постановок и конкурсной практики. В нашем коллективе
+              дети не просто учатся танцевать — они становятся частью творческой
+              команды, где уважение, дисциплина и раскрытие индивидуальности
+              идут рука об руку.
+            </p>
+          </div>
+        </div>
+        <div class="disciplines reveal">
+          <span>Современная хореография</span><span>Эстрадный танец</span
+          ><span>Джаз-модерн</span><span>Импровизация</span
+          ><span>Актёрское мастерство</span><span>Акробатика</span
+          ><span>Физический театр</span>
+        </div>
+      </section>
+
+      <section class="director section" id="director">
+        <div class="director-photo reveal">
+          <img src="Анна Воскова.webp" alt="Анна Александровна Воскова" /><span
+            class="photo-tag"
+            >Руководитель театра</span
+          >
+        </div>
+        <div class="director-copy reveal">
+          <div class="section-mark">02 · Художественный руководитель</div>
+          <h2>Анна<br />Александровна<br /><em>Воскова</em></h2>
+          <div class="director-statement">
+            <p>
+              Танец и творчество для меня — образ жизни. В Театре танца
+              «Зеркальный мир» мы воспитываем не только артистов, но и
+              креативных, ответственных и уверенных в себе людей.
+            </p>
+            <p>Занятия развивают:</p>
+            <ul>
+              <li>креативность и умение импровизировать;</li>
+              <li>эмоциональный интеллект и коммуникативные навыки;</li>
+              <li>дисциплину, ответственность и умение работать в команде;</li>
+              <li>
+                физическую выносливость, пластику и сценическую уверенность.
+              </li>
+            </ul>
+            <p>
+              Эти качества пригодятся в учёбе, карьере и жизни. Мы помогаем
+              ребёнку раскрыть таланты и вырасти самостоятельной, творческой
+              личностью.
+            </p>
+          </div>
+          <div class="director-experience">Стаж работы · более 25 лет</div>
+          <blockquote>
+            «Танец — особый мир, но стать его частью может каждый!»
+          </blockquote>
+        </div>
+      </section>
+
+      <section class="team section" id="team">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-mark">03 · Команда</div>
+            <h2>Педагоги</h2>
+          </div>
+          <p>Рядом на каждом этапе: от первого движения до большой сцены.</p>
+        </div>
+        <div class="team-grid">
+          <article class="person reveal">
+            <div class="person-photo">
+              <img
+                src="эли-new.webp"
+                alt="Эли Андреевна Возвахова"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="person-role">
+              Хореограф-постановщик · педагог групп начальной подготовки ·
+              специалист по ранней профессиональной подготовке
+            </div>
+            <h3>Эли Андреевна<br />Возвахова</h3>
+            <blockquote class="person-quote">
+              «Моя задача — не просто научить ребёнка танцевать. Я стремлюсь
+              создать условия, в которых он сможет раскрыть свои способности,
+              поверить в себя, научиться преодолевать трудности и получать
+              удовольствие от собственного развития. Потому что настоящие победы
+              начинаются не на сцене, а на каждой тренировке. И именно эти
+              качества — дисциплина, трудолюбие, уверенность в себе и умение
+              добиваться цели — остаются с человеком на всю жизнь».
+            </blockquote>
+            <div class="person-experience">Стаж работы · более 15 лет</div>
+          </article>
+          <article class="person person-leila reveal">
+            <div class="person-photo">
+              <img
+                src="лейла.webp"
+                alt="Лэйла Евгеньевна Груздева"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="person-role">
+              Тренер по акробатике · МСМК по спортивной гимнастике · трёхкратная
+              чемпионка России
+            </div>
+            <h3>Лэйла Евгеньевна<br />Груздева</h3>
+            <blockquote class="person-quote">
+              «Тренер — не волшебник: он задаёт вектор, даёт знания и
+              корректирует технику, но не творит чудес. Без вашей постоянной
+              работы над собой даже лучший наставник не раскроет потенциал.
+              Регулярные тренировки, анализ ошибок и выход из зоны комфорта
+              обязательны. Если ждать, что тренер всё сделает за вас без усилий,
+              успеха не будет».
+            </blockquote>
+            <div class="person-experience">Стаж работы · более 15 лет</div>
+          </article>
+          <article class="person reveal">
+            <div class="person-photo">
+              <img
+                src="катя-1.webp"
+                alt="Катерина Сергеевна Акимова"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="person-role">
+              Хореограф-постановщик · педагог по современному танцу
+            </div>
+            <h3>Катерина Сергеевна<br />Акимова</h3>
+            <blockquote class="person-quote">
+              «Верю в то, что язык тела — самый международный и
+              интернациональный: он помогает не только общаться с другими, но и
+              лучше узнавать себя. А ещё неизменно считаю, что танцы в первую
+              очередь предназначены для радости и удовольствия от процесса».
+            </blockquote>
+            <div class="person-experience">Стаж работы · 13 лет</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="projects section" id="projects">
+        <div class="section-head light-head reveal">
+          <div>
+            <div class="section-mark">04 · Истории в кадрах</div>
+            <h2>Больше, чем<br />движение</h2>
+          </div>
+          <p class="project-quote">«Танец — язык, которым мы пишем истории»</p>
+        </div>
+        <div class="gallery">
+          <button
+            class="work reveal"
+            data-src="на страницу/Глиняных дел мастер.webp"
+          >
+            <img
+              src="на страницу/Глиняных дел мастер.webp"
+              alt="Выступление Глиняных дел мастер"
+              loading="lazy"
+              decoding="async"
+            /><span
+              ><b>«Глиняных дел мастер»</b><small>История в кадрах</small></span
+            >
+          </button>
+          <button
+            class="work tall reveal"
+            data-src="на страницу/Be a woman (2).webp"
+          >
+            <img
+              src="на страницу/Be a woman (2).webp"
+              alt="Выступление Be a woman"
+              loading="lazy"
+              decoding="async"
+            /><span><b>«Be a woman»</b><small>История в кадрах</small></span>
+          </button>
+          <button class="work reveal" data-src="на страницу/Ненужные.webp">
+            <img
+              src="на страницу/Ненужные.webp"
+              alt="Выступление Ненужные"
+            /><span><b>«Ненужные»</b><small>Выступление</small></span>
+          </button>
+          <button
+            class="work wide reveal"
+            data-src="на страницу/Дети Йеманжи.jpg"
+          >
+            <img
+              src="на страницу/Дети Йеманжи.jpg"
+              alt="Выступление Дети Йеманжи"
+            /><span><b>«Дети Йеманжи»</b><small>Выступление</small></span>
+          </button>
+          <button class="work reveal" data-src="на страницу/Неотступно.webp">
+            <img
+              src="на страницу/Неотступно.webp"
+              alt="Выступление Неотступно"
+            /><span><b>«Неотступно»</b><small>Выступление</small></span>
+          </button>
+          <button class="work reveal" data-src="на страницу/Против ветра.webp">
+            <img
+              src="на страницу/Против ветра.webp"
+              alt="Выступление Против ветра"
+              loading="lazy"
+              decoding="async"
+            /><span><b>«Против ветра»</b></span>
+          </button>
+          <button class="work reveal" data-src="на страницу/Звон.webp">
+            <img
+              src="на страницу/Звон.webp"
+              alt="Выступление Звон"
+              loading="lazy"
+              decoding="async"
+            /><span><b>«Звон»</b></span>
+          </button>
+          <button class="work reveal" data-src="на страницу/Ассимиляция.webp">
+            <img
+              src="на страницу/Ассимиляция.webp"
+              alt="Выступление Ассимиляция"
+              loading="lazy"
+              decoding="async"
+            /><span><b>«Ассимиляция»</b></span>
+          </button>
+        </div>
+      </section>
+
+      <section class="archive section" id="archive">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-mark">05 · Фотогалерея</div>
+            <h2>Фотогалерея</h2>
+          </div>
+          <p>
+            Выберите историю или событие — внутри собраны все фотографии из этой
+            серии.
+          </p>
+        </div>
+        <div class="album-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="awards section" id="awards">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-mark">06 · Результаты</div>
+            <h2>Наши достижения</h2>
+          </div>
+        </div>
+        <div class="award-list">
+          <article>
+            <span>Телевизионный проект · телеканал «Культура»</span>
+            <h3>«Большие и маленькие»</h3>
+            <p>Участники телевизионного проекта</p>
+            <b>Специальный приз</b>
+          </article>
+          <article>
+            <span>Всероссийский конкурс</span>
+            <h3>«Триумф лауреатов»</h3>
+            <p>
+              Специальные призы за высокий профессиональный уровень исполнения и
+              профессионализм педагога
+            </p>
+            <b>Гран-при</b>
+          </article>
+          <article>
+            <span>Международный конкурс</span>
+            <h3>«Золотой фламинго»</h3>
+            <p>
+              Специальные призы за оригинальность постановок «Ненужные» и
+              «Против ветра»
+            </p>
+            <b>Гран-при</b>
+          </article>
+          <article>
+            <span>Всероссийский конкурс · Level Up</span>
+            <h3>Level Up</h3>
+            <p>
+              Спецпризы за исполнительское мастерство постановки «Манипулятор» и
+              точность хореографического решения постановки «Против ветра»
+            </p>
+            <b>Гран-при</b>
+          </article>
+          <article>
+            <span>Открытый фестиваль-конкурс</span>
+            <h3>Avocadance</h3>
+            <p>Высшая награда фестиваля-конкурса</p>
+            <b>Гран-при</b>
+          </article>
+          <article>
+            <span>Международный фестиваль-конкурс</span>
+            <h3>Art Dance</h3>
+            <p>Конкурс хореографического искусства</p>
+            <b>Гран-при</b>
+          </article>
+          <article>
+            <span>Конкурс хореографического искусства</span>
+            <h3>Avocado Pro</h3>
+            <p>Высшая награда конкурса</p>
+            <b>Гран-при</b>
+          </article>
+          <article>
+            <span>Всероссийский конкурс балетмейстерских работ</span>
+            <h3>«Путь художника»</h3>
+            <p>Специальный приз за постановку «Глиняных дел мастер»</p>
+            <b>Лауреаты I степени</b>
+          </article>
+          <article>
+            <span>Международный хореографический фестиваль</span>
+            <h3>«Наследники талантов»</h3>
+            <p>
+              Специальный приз за балетмейстерскую работу постановки «Против
+              ветра»
+            </p>
+            <b>Лауреаты I степени</b>
+          </article>
+          <article>
+            <span>Международный конкурс</span>
+            <h3>Dance Continent</h3>
+            <p>Специальный приз за яркую сценическую работу «Звон»</p>
+            <b>Лауреаты I степени</b>
+          </article>
+          <article>
+            <span>Премия по современному танцу</span>
+            <h3>Level Up</h3>
+            <p>Премия в области современной хореографии</p>
+            <b>Лауреаты I степени</b>
+          </article>
+          <article>
+            <span>Международный детский и юношеский конкурс</span>
+            <h3>«Подмастерье»</h3>
+            <p>Конкурс хореографического искусства</p>
+            <b>Лауреаты I степени</b>
+          </article>
+          <article>
+            <span>Региональный конкурс</span>
+            <h3>Dance Point</h3>
+            <p>Конкурс хореографического искусства</p>
+            <b>Лауреаты I степени</b>
+          </article>
+          <article>
+            <span>Фестиваль современной хореографии</span>
+            <h3>Futurum</h3>
+            <p>Финалисты фестиваля современной хореографии</p>
+            <b>Финалисты</b>
+          </article>
+        </div>
+      </section>
+
+      <section class="visit section" id="visit">
+        <div class="section-head reveal">
+          <div>
+            <div class="section-mark">07 · Условия и отзывы</div>
+            <h2>Всё для<br /><em>первого шага</em></h2>
+          </div>
+          <p>Главное о занятиях и впечатления семей театра.</p>
+        </div>
+        <div class="visit-facts">
+          <article class="visit-fact reveal">
+            <span>Расписание</span>
+            <h3>Понедельник — пятница</h3>
+            <b>15:00–21:00</b>
+            <h3>Суббота</h3>
+            <b>10:00–17:00</b>
+            <p>Точное время занятий зависит от группы и уточняется при записи.</p>
+          </article>
+          <article class="visit-fact reveal">
+            <span>Абонемент</span>
+            <strong>7 920 ₽</strong>
+            <h3>12 занятий в месяц</h3>
+            <p>Подходящую по возрасту и подготовке группу подберёт педагог.</p>
+          </article>
+          <article class="visit-fact reveal">
+            <span>Кого принимаем</span>
+            <strong>3–16 лет</strong>
+            <h3>Девочки</h3>
+            <p>Начальный уровень подготовки не важен.</p>
+          </article>
+          <article class="visit-fact reveal">
+            <span>Как нас найти</span>
+            <h3>Галерея «Солнцево»</h3>
+            <b>1 этаж</b>
+            <p>Москва, улица Богданова, 44.</p>
+          </article>
+        </div>
+        <div class="reviews-head reveal">
+          <div class="section-mark">Говорят о нас</div>
+          <h3>Отзывы родителей и зрителей</h3>
+        </div>
+        <div class="reviews-grid">
+          <blockquote class="review reveal"><p>Дочке 5,5 лет, только начали посещать театр танца — нам всё очень нравится. Педагоги — профессионалы 👍</p><footer>Марина</footer></blockquote>
+          <blockquote class="review reveal"><p>«Зеркальный мир» — это театр, который вдохновляет, трогает до глубины души и оставляет в сердце светлые, незабываемые впечатления. Это место, куда хочется возвращаться снова и снова, чтобы вновь окунуться в эту вселенную танца и эмоций.</p><footer>Полина</footer></blockquote>
+          <blockquote class="review reveal"><p>Очень рада, что дочь — часть команды: энергетика там царит невероятная! Уровень подготовки девочек поражает, здесь действительно видят потенциал в каждом. Каждое занятие — увлекательное путешествие в мир танца.</p><footer>Дарья</footer></blockquote>
+          <blockquote class="review reveal"><p>Замечательное место для развития танцоров и интересные спектакли — это и правда Театр Танца :-)</p><footer>Авдей</footer></blockquote>
+          <blockquote class="review reveal"><p>Это не просто студия, а целая школа танцев. Грамотный подход педагогов: дети не только развивают физическую форму, но и раскрывают творческий потенциал. Рады быть частью коллектива!</p><footer>Арина</footer></blockquote>
+          <blockquote class="review reveal"><p>Дети не просто танцуют, а глубоко проживают каждую постановку. Шикарная подготовка и развитие индивидуальных данных каждой девочки. Ребёнок ходит с большим удовольствием.</p><footer>Анна</footer></blockquote>
+          <blockquote class="review reveal"><p>Есть разные группы по возрасту, данным детей и интенсивности участия в показах. Каждому ребёнку уделяется максимум внимания, а педагоги прекрасно дополняют друг друга, делая обучение разносторонним и увлекательным.</p><footer>Катрина</footer></blockquote>
+          <blockquote class="review reveal"><p>Профессиональный театр для детей, любимая студия моей дочери — бежит на занятия как на праздник. Спасибо прекрасным педагогам за творческое обучение и обогащение души.</p><footer>Оля</footer></blockquote>
+        </div>
+      </section>
+
+      <section class="contact section" id="contact">
+        <div class="contact-copy reveal">
+          <div class="section-mark">08 · Запись и сотрудничество</div>
+          <h2>Присоединиться<br />к Зеркальному<br /><em>миру</em></h2>
+          <p>
+            Приглашаем девочек 3–16 лет на знакомство с театром и просмотр.
+            Уровень подготовки не важен.
+          </p>
+          <div class="contact-person">
+            <b>Анна Александровна Воскова</b
+            ><span>Руководитель театра · запись и сотрудничество</span>
+          </div>
+          <div class="contact-links">
+            <a class="studio-phone" href="tel:+79032105544"
+              >+7 903 210-55-44 <small>Телефон</small></a
+            ><a
+              href="https://max.ru/u/f9LHodD0cOKclH9cCMD7R6vFdcU49KZQVYp5IbUi39KY3-VkR1BZZfP8eU4"
+              target="_blank"
+              rel="noopener"
+              >MAX <small>По вопросам сотрудничества</small></a
+            ><a href="tg://resolve?phone=79032105544"
+              >Telegram <small>По вопросам сотрудничества</small></a
+            >
+            <a
+              class="studio-email"
+              href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=anna.voskovazm%40mail.ru"
+              target="_blank"
+              rel="noopener"
+              data-email="anna.voskovazm@mail.ru"
+              >anna.voskovazm@mail.ru <small>Электронная почта</small></a
+            >
+            <a
+              class="studio-address"
+              href="https://yandex.ru/maps/org/zerkalny_mir/115555938647/?ll=37.396475%2C55.651309&amp;z=20.86"
+              target="_blank"
+              rel="noopener"
+              >Москва, улица Богданова, 44 <small>Открыть на карте</small></a
+            >
+          </div>
+          <div class="social-channels">
+            <span>Каналы театра</span>
+            <div>
+              <a href="tg://resolve?domain=TeatrTancaZerkalniimir"
+                >Telegram ↗</a
+              ><a
+                href="https://max.ru/channel_voskovaZM"
+                target="_blank"
+                rel="noopener"
+                >MAX ↗</a
+              ><a
+                href="https://vk.ru/teatrtancazerkalniimir"
+                target="_blank"
+                rel="noopener"
+                >VK ↗</a
+              ><a
+                href="https://rutube.ru/channel/18616592"
+                target="_blank"
+                rel="noopener"
+                >RUTUBE ↗</a
+              >
+            </div>
+          </div>
+          <p class="contact-note">
+            Для записи на просмотр заполните форму записи. Ответим в течение
+            рабочего дня.
+          </p>
+        </div>
+        <form class="form reveal" id="signup-form">
+          <div class="form-kicker">Заявка на просмотр</div>
+          <h3>Расскажите немного<br />о будущем артисте</h3>
+          <label
+            >Как к вам обращаться?<input
+              type="text"
+              name="name"
+              placeholder="Ваше имя"
+              autocomplete="name"
+              required /></label
+          ><label
+            >Сколько лет ребёнку?<input
+              type="number"
+              name="age"
+              min="3"
+              max="16"
+              placeholder="Возраст"
+              inputmode="numeric"
+              required /></label
+          ><label
+            >Ваш телефон<input
+              type="tel"
+              name="phone"
+              placeholder="+7 999 000-00-00"
+              autocomplete="tel"
+              inputmode="tel"
+              maxlength="18"
+              required /></label
+          ><label
+            >Комментарий<textarea
+              name="message"
+              rows="3"
+              placeholder="Опыт занятий, удобное время"
+            ></textarea></label
+          ><button class="button purple" type="submit">
+            Подготовить заявку <span>↗</span>
+          </button>
+          <p class="form-note">
+            На следующем шаге можно скопировать заявку и выбрать MAX или
+            Telegram.
+          </p>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <a class="brand footer-brand" href="#top"
+        ><img src="Логотип.webp" alt="" /><span>Зеркальный мир</span></a
+      >
+      <p>ИП Воскова Анна Александровна<br />Москва, улица Богданова, 44<br />© 2026</p>
+      <div>
+        <a href="#about">О театре</a><a href="#director">Руководитель</a
+        ><a href="#team">Команда</a><a href="#projects">Больше, чем движение</a
+        ><a href="#archive">Фотогалерея</a><a href="#awards">Достижения</a
+        ><a href="#visit">Условия и отзывы</a><a href="#contact">Записаться</a>
+      </div>
+      <a class="to-top" href="#top">Наверх ↑</a>
+    </footer>
+
+    <dialog class="lightbox">
+      <div class="lightbox-stage">
+        <button class="lightbox-close modal-close" type="button" aria-label="Закрыть"></button
+        ><button class="lightbox-prev" aria-label="Предыдущее фото">←</button>
+        <div class="lightbox-media">
+          <img class="lightbox-current" src="" alt="" />
+        </div>
+        <button class="lightbox-next" aria-label="Следующее фото">→</button>
+        <div class="lightbox-meta">
+          <span class="lightbox-title"></span
+          ><span class="lightbox-count"></span>
+        </div>
+      </div>
+    </dialog>
+    <dialog class="album-dialog">
+      <div class="album-shell">
+        <button class="album-close modal-close" type="button" aria-label="Закрыть альбом"></button>
+        <div class="album-head">
+          <div>
+            <div class="section-mark">Фотоархив</div>
+            <h2 class="album-title"></h2>
+          </div>
+          <span class="album-total"></span>
+        </div>
+        <div class="album-photos"></div>
+      </div>
+    </dialog>
+    <dialog class="application-dialog">
+      <div>
+        <button class="application-close modal-close" type="button" aria-label="Закрыть"></button>
+        <div class="form-kicker">Заявка готова</div>
+        <h3>Остался один шаг</h3>
+        <p>
+          Скопируйте заявку одной кнопкой, затем откройте удобный мессенджер и
+          вставьте текст в чат Анны Александровны.
+        </p>
+        <textarea
+          class="application-text"
+          readonly
+          aria-label="Текст заявки"
+          tabindex="-1"
+        ></textarea>
+        <div class="application-actions">
+          <button class="button purple application-copy" type="button">
+            Скопировать заявку</button
+          ><a
+            class="button dark application-open is-locked"
+            href="https://max.ru/u/f9LHodD0cOKclH9cCMD7R6vFdcU49KZQVYp5IbUi39KY3-VkR1BZZfP8eU4"
+            target="_blank"
+            rel="noopener"
+            aria-disabled="true"
+            tabindex="-1"
+            >Перейти в MAX</a
+          ><a
+            class="button telegram-open is-locked"
+            href="tg://resolve?phone=79032105544"
+            aria-disabled="true"
+            tabindex="-1"
+            >Перейти в Telegram</a
+          >
+        </div>
+      </div>
+    </dialog>
+    <div class="toast">Текст заявки скопирован</div>
+    <script src="albums.generated.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
