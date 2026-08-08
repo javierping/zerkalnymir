@@ -42,7 +42,7 @@ addEventListener("keydown", (event) => {
 addEventListener(
   "resize",
   () => {
-    if (innerWidth > 900) setMenu(false);
+    if (innerWidth > 1120) setMenu(false);
   },
   { passive: true },
 );
@@ -107,20 +107,10 @@ updateScroll();
 
 function syncNavFit() {
   if (!header || !nav) return;
-  header.classList.remove("nav-fit-mobile");
-  // На промежуточных ширинах десктопная шапка уже не помещается,
-  // поэтому заранее переключаем её в мобильный режим.
-  if (innerWidth <= 1100) {
-    header.classList.add("nav-fit-mobile");
-    return;
-  }
-  const headerBox = header.getBoundingClientRect();
-  const navBox = nav.getBoundingClientRect();
-  const isOverflowing =
-    nav.scrollWidth > nav.clientWidth + 4 ||
-    navBox.right > headerBox.right + 2 ||
-    navBox.left < headerBox.left + header.clientWidth * 0.34;
-  header.classList.toggle("nav-fit-mobile", isOverflowing);
+  // Ниже 1120px десктопная навигация начинает сжиматься и переноситься.
+  // Фиксированный брейкпоинт надёжнее измерения шрифтов: оно давало
+  // ложные срабатывания на широких мониторах.
+  header.classList.toggle("nav-fit-mobile", innerWidth <= 1120);
 }
 addEventListener("resize", syncNavFit, { passive: true });
 addEventListener("orientationchange", syncNavFit, { passive: true });

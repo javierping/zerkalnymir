@@ -3960,3 +3960,15 @@ html::-webkit-scrollbar-thumb:hover,
     height: 40px;
   }
 }
+
+/* Кнопка закрытия мобильного меню всегда остаётся поверх раскрытой панели. */
+.header.nav-fit-mobile .menu-btn {
+  position: fixed;
+  z-index: 30;
+  top: 18px;
+  right: 4vw;
+}
+
+.header.nav-fit-mobile .nav {
+  z-index: 25;
+}
