@@ -2505,10 +2505,21 @@ textarea:focus-visible {
   .application-actions {
     grid-template-columns: 1fr;
   }
-  .application-actions .application-copy {
+.application-actions .application-copy {
     grid-column: auto;
   }
 }
+
+/* Фиолетовый фон только у раздела плеера. */
+.video { background: var(--violet); color: #fff; }
+
+/* Финальные настройки шапки и фон страницы. */
+.header .brand { align-items: center; }
+.header .brand span { display: inline-flex; align-items: center; line-height: 1; text-align: center; }
+.video { background: var(--violet); color: #fff; }
+.hero h1 { font-size: clamp(58px, 8vw, 118px); }
+iframe[data-autopause-video], video { display: block; max-width: 100%; }
+iframe[data-autopause-video].video-paused-offscreen { opacity: .88; transition: opacity .35s ease; }
 
 /* Финальная фиксация вертикального центра фирменного блока шапки. */
 .header .brand,
@@ -3652,6 +3663,87 @@ body > footer > * {
   color: #fff;
   box-shadow: 0 8px 24px rgba(111, 57, 220, 0.32);
 }
+
+/* Видеоархив в стилистике сайта */
+.video { background: var(--violet); color: #fff; }
+.video-player {
+  max-width: 1120px;
+  margin: 48px auto 0;
+  padding: clamp(10px, 1.6vw, 22px);
+  background: #18151d;
+  box-shadow: 0 28px 70px rgba(24, 21, 29, .16);
+}
+.video-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #0e0b11;
+}
+.video-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
+.video-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 4px 2px;
+  color: #f4f0e9;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.video-caption a { color: #c5a8ff; text-decoration: none; transition: color .25s ease; }
+.video-caption a:hover { color: #fff; }
+@media (max-width: 580px) {
+  .video-caption { align-items: flex-start; flex-direction: column; gap: 10px; }
+}
+
+/* Включается скриптом, когда пункты шапки не помещаются из-за масштаба или ширины окна. */
+.header.nav-fit-mobile .menu-btn {
+  display: grid;
+  place-content: center;
+  gap: 7px;
+  flex: 0 0 46px;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(17, 13, 20, 0.35);
+  color: #fff;
+}
+.header.nav-fit-mobile .menu-btn span {
+  display: block;
+  width: 24px;
+  height: 1px;
+  margin: 0;
+  background: #fff;
+  transition: transform .3s, opacity .25s;
+}
+.header.nav-fit-mobile .menu-btn.open span:first-child { transform: translateY(4px) rotate(45deg); }
+.header.nav-fit-mobile .menu-btn.open span:last-child { transform: translateY(-4px) rotate(-45deg); }
+.header.nav-fit-mobile .nav {
+  position: fixed;
+  z-index: 1;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  padding: 92px 26px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 20px;
+  overflow-y: auto;
+  background: #1b1323;
+  font-family: Prata, serif;
+  font-size: 30px;
+  transform: translateX(100%);
+  transition: transform .35s;
+}
+.header.nav-fit-mobile .nav.open { transform: none; visibility: visible; }
+.header.nav-fit-mobile .nav-cta { margin-top: 8px; }
 @media (max-width: 1000px) {
   .visit-facts,
   .reviews-grid {
@@ -3833,5 +3925,38 @@ html::-webkit-scrollbar-thumb:hover,
   }
   .application-actions .application-copy {
     grid-column: auto;
+  }
+}
+
+/* Центрирование подписи в уменьшенной шапке относительно маленького логотипа */
+.header.scrolled .brand {
+  align-items: center;
+  height: 44px;
+}
+
+.header.scrolled .brand span {
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  min-height: 0;
+  margin: 0;
+  transform: none;
+  text-align: center;
+}
+
+.header.scrolled .brand span b {
+  display: block;
+  line-height: 1;
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .header.scrolled .brand {
+    height: 40px;
+  }
+
+  .header.scrolled .brand span {
+    height: 40px;
   }
 }

@@ -5,6 +5,17 @@ document.querySelectorAll('a[href^="#"]').forEach((link) =>
     const target = document.querySelector(link.getAttribute("href"));
     if (!target) return;
     event.preventDefault();
+    if (target.id === "top") {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? "auto"
+          : "smooth",
+      });
+      history.replaceState(null, "", "#top");
+      return;
+    }
     target.scrollIntoView({
       behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
         ? "auto"
@@ -93,6 +104,19 @@ addEventListener(
   { passive: true },
 );
 updateScroll();
+
+function syncNavFit() {
+  if (!header || !nav) return;
+  header.classList.remove("nav-fit-mobile");
+  if (innerWidth <= 900) return;
+  const headerBox = header.getBoundingClientRect();
+  const navBox = nav.getBoundingClientRect();
+  const isOverflowing = nav.scrollWidth > nav.clientWidth + 4 || navBox.right > headerBox.right + 2;
+  header.classList.toggle("nav-fit-mobile", isOverflowing);
+}
+addEventListener("resize", syncNavFit, { passive: true });
+addEventListener("orientationchange", syncNavFit, { passive: true });
+requestAnimationFrame(syncNavFit);
 const navLinks = [...document.querySelectorAll('.nav a[href^="#"]')],
   navSections = navLinks
     .map((link) => document.querySelector(link.getAttribute("href")))
@@ -345,10 +369,13 @@ const albumDialog = document.querySelector(".album-dialog"),
 function openAlbum(album) {
   albumDialog.classList.remove("is-closing");
   albumDialog.querySelector(".album-title").textContent = album.title;
+  const visibleAlbumPhotos = album === window.PHOTO_ALBUMS?.[0]
+    ? album.photos.slice(2)
+    : album.photos;
   albumDialog.querySelector(".album-total").textContent =
-    `${album.photos.length} фотографий`;
+    `${visibleAlbumPhotos.length} фотографий`;
   albumPhotos.replaceChildren();
-  const photos = album.photos.map((photo, index) => ({
+  const photos = visibleAlbumPhotos.map((photo, index) => ({
     src: photo.src,
     thumb: photo.thumb,
     title: `${album.title} · ${index + 1}`,
@@ -392,9 +419,12 @@ function openAlbum(album) {
 }
 (window.PHOTO_ALBUMS || []).forEach((album, index) => {
   const button = document.createElement("button");
+  const photoCount = album === window.PHOTO_ALBUMS?.[0]
+    ? Math.max(0, album.photos.length - 2)
+    : album.photos.length;
   button.className = "album-card reveal";
   button.style.setProperty("--delay", `${Math.min(index, 5) * 65}ms`);
-  button.innerHTML = `<img src="${album.cover}" alt="${album.title}" loading="${index < 3 ? "eager" : "lazy"}" decoding="async"><span class="album-card-content"><h3>${album.title}</h3><p>${album.photos.length} фотографий · открыть альбом</p></span>`;
+  button.innerHTML = `<img src="${album.cover}" alt="${album.title}" loading="${index < 3 ? "eager" : "lazy"}" decoding="async"><span class="album-card-content"><h3>${album.title}</h3><p>${photoCount} фотографий · открыть альбом</p></span>`;
   button.addEventListener("click", () => openAlbum(album));
   albumGrid.append(button);
   observer.observe(button);
@@ -494,3 +524,52 @@ document.querySelectorAll(".button,.nav-cta,.contact-links a").forEach((el) =>
     setTimeout(() => ripple.remove(), 650);
   }),
 );
+
+// Автопауза и плавное затухание звука для видео и Rutube-iframe.
+const videoPlayers = [...document.querySelectorAll("video, iframe[data-autopause-video]")];
+const sendPlayerCommand = (player, type, data) => {
+  if (!(player instanceof HTMLIFrameElement) || !player.contentWindow) return;
+  const message = { type, data };
+  player.contentWindow.postMessage(message, "*");
+  player.contentWindow.postMessage(JSON.stringify(message), "*");
+};
+const fadePlayer = (player, target, done) => {
+  if (player._fadeTimer) cancelAnimationFrame(player._fadeTimer);
+  if (player instanceof HTMLIFrameElement) {
+    sendPlayerCommand(player, "player:setVolume", { volume: target });
+    if (done) setTimeout(done, 320);
+    return;
+  }
+  const start = Number.isFinite(player.volume) ? player.volume : 1;
+  const startedAt = performance.now();
+  const step = (now) => {
+    const progress = Math.min(1, (now - startedAt) / 320);
+    player.volume = start + (target - start) * progress;
+    if (progress < 1) player._fadeTimer = requestAnimationFrame(step);
+    else { player._fadeTimer = 0; if (done) done(); }
+  };
+  player._fadeTimer = requestAnimationFrame(step);
+};
+const pausePlayer = (player) => {
+  if (player instanceof HTMLVideoElement ? player.paused : player.dataset.wasPlaying !== "true") return;
+  player.dataset.wasPlaying = "true";
+  fadePlayer(player, 0, () => player instanceof HTMLVideoElement ? player.pause() : sendPlayerCommand(player, "player:pause"));
+  player.classList.add("video-paused-offscreen");
+};
+const resumePlayer = (player) => {
+  if (player.dataset.wasPlaying !== "true") return;
+  player.dataset.wasPlaying = "false";
+  player.classList.remove("video-paused-offscreen");
+  if (player instanceof HTMLVideoElement) { player.volume = 0; player.play().catch(() => {}); }
+  else sendPlayerCommand(player, "player:play");
+  fadePlayer(player, 1);
+};
+if (videoPlayers.length) {
+  const playerObserver = new IntersectionObserver((entries) => entries.forEach((entry) => entry.isIntersecting ? resumePlayer(entry.target) : pausePlayer(entry.target)), { threshold: 0.2 });
+  videoPlayers.forEach((player) => {
+    playerObserver.observe(player);
+    player.addEventListener("play", () => { player.dataset.wasPlaying = "true"; }, { passive: true });
+    player.addEventListener("pointerdown", () => { player.dataset.wasPlaying = "true"; }, { passive: true });
+  });
+  document.addEventListener("visibilitychange", () => document.hidden ? videoPlayers.forEach(pausePlayer) : videoPlayers.forEach((player) => { const rect = player.getBoundingClientRect(); if (rect.top < innerHeight && rect.bottom > 0) resumePlayer(player); }));
+}
