@@ -108,15 +108,25 @@ updateScroll();
 function syncNavFit() {
   if (!header || !nav) return;
   header.classList.remove("nav-fit-mobile");
-  if (innerWidth <= 900) return;
+  // На промежуточных ширинах десктопная шапка уже не помещается,
+  // поэтому заранее переключаем её в мобильный режим.
+  if (innerWidth <= 1100) {
+    header.classList.add("nav-fit-mobile");
+    return;
+  }
   const headerBox = header.getBoundingClientRect();
   const navBox = nav.getBoundingClientRect();
-  const isOverflowing = nav.scrollWidth > nav.clientWidth + 4 || navBox.right > headerBox.right + 2;
+  const isOverflowing =
+    nav.scrollWidth > nav.clientWidth + 4 ||
+    navBox.right > headerBox.right + 2 ||
+    navBox.left < headerBox.left + header.clientWidth * 0.34;
   header.classList.toggle("nav-fit-mobile", isOverflowing);
 }
 addEventListener("resize", syncNavFit, { passive: true });
 addEventListener("orientationchange", syncNavFit, { passive: true });
 requestAnimationFrame(syncNavFit);
+if (document.fonts?.ready) document.fonts.ready.then(syncNavFit);
+if (window.ResizeObserver && header) new ResizeObserver(syncNavFit).observe(header);
 const navLinks = [...document.querySelectorAll('.nav a[href^="#"]')],
   navSections = navLinks
     .map((link) => document.querySelector(link.getAttribute("href")))
