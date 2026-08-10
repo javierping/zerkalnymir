@@ -3963,10 +3963,23 @@ html::-webkit-scrollbar-thumb:hover,
 
 /* Кнопка закрытия мобильного меню всегда остаётся поверх раскрытой панели. */
 .header.nav-fit-mobile .menu-btn {
-  position: fixed;
+  position: relative;
   z-index: 30;
+}
+
+/* Кнопка становится фиксированной только во время открытого меню. */
+body.menu-open .header.nav-fit-mobile .menu-btn {
+  position: fixed;
   top: 18px;
   right: 4vw;
+}
+
+/* Шапка всегда остаётся сверху и не прыгает при переходах между разделами. */
+.header,
+.header.scrolled { position: fixed; top: 0; }
+html { scroll-padding-top: 100px; }
+@media (max-width: 760px) {
+  html { scroll-padding-top: 80px; }
 }
 
 .header.nav-fit-mobile .nav {

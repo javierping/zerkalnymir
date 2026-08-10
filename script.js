@@ -565,11 +565,27 @@ const resumePlayer = (player) => {
   fadePlayer(player, 1);
 };
 if (videoPlayers.length) {
-  const playerObserver = new IntersectionObserver((entries) => entries.forEach((entry) => entry.isIntersecting ? resumePlayer(entry.target) : pausePlayer(entry.target)), { threshold: 0.2 });
+  const playerObserver = new IntersectionObserver((entries) => entries.forEach((entry) => {
+    if (!entry.isIntersecting) pausePlayer(entry.target);
+  }), { threshold: 0.2 });
   videoPlayers.forEach((player) => {
     playerObserver.observe(player);
     player.addEventListener("play", () => { player.dataset.wasPlaying = "true"; }, { passive: true });
     player.addEventListener("pointerdown", () => { player.dataset.wasPlaying = "true"; }, { passive: true });
   });
-  document.addEventListener("visibilitychange", () => document.hidden ? videoPlayers.forEach(pausePlayer) : videoPlayers.forEach((player) => { const rect = player.getBoundingClientRect(); if (rect.top < innerHeight && rect.bottom > 0) resumePlayer(player); }));
+  window.addEventListener("message", (event) => {
+    let message = event.data;
+    if (typeof message === "string") {
+      try { message = JSON.parse(message); } catch { return; }
+    }
+    if (!message?.type) return;
+    const type = String(message.type).toLowerCase();
+    const player = videoPlayers.find((item) => item.contentWindow === event.source);
+    if (!player) return;
+    if (type.includes("play")) player.dataset.wasPlaying = "true";
+    if (type.includes("pause") || type.includes("stop")) player.dataset.wasPlaying = "false";
+  });
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) videoPlayers.forEach(pausePlayer);
+  });
 }
